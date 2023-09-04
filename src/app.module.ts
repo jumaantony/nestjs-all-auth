@@ -4,6 +4,7 @@ import {
 } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { APP_PIPE } from '@nestjs/core';
+import { SupabaseModule } from './supabase/supabase.module';
 
 @Module({
   imports: [
@@ -11,6 +12,7 @@ import { APP_PIPE } from '@nestjs/core';
       isGlobal: true,
       envFilePath: `.env/.env`,
     }),
+    SupabaseModule,
   ],
   controllers: [],
   providers: [
