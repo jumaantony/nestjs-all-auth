@@ -76,7 +76,8 @@
     "moduleNameMapper": {
       "^@/(.*)$": "<rootDir>/../src/$1",
       "@common/(.*)$": "<rootDir>/../src/common/$1",
-      "@supabase-module/(.*)$": "<rootDir>/../src/supabase/$1"
+      "@supabase-module/(.*)$": "<rootDir>/../src/supabase/$1",
+      "@phone/(.*)$": "<rootDir>/../src/phone/$1"
     }
   }
 }

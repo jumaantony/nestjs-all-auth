@@ -20,7 +20,8 @@
     "paths": {
       "@/*": ["src/*"],
       "@common/*": ["src/common/*"],
-      "@supabase-module/*": ["src/supabase/*"]
+      "@supabase-module/*": ["src/supabase/*"],
+      "@phone/*": ["src/phone/*"],
     }
   }
 }
