@@ -15,8 +15,8 @@ export interface Database {
           first_name: string | null
           id: string
           last_name: string | null
-          phone_password_hash: string | null
-          text_password_hash: string | null
+          password_hash: string | null
+          phone: string | null
           updated_at: string | null
         }
         Insert: {
@@ -24,8 +24,8 @@ export interface Database {
           first_name?: string | null
           id?: string
           last_name?: string | null
-          phone_password_hash?: string | null
-          text_password_hash?: string | null
+          password_hash?: string | null
+          phone?: string | null
           updated_at?: string | null
         }
         Update: {
@@ -33,8 +33,8 @@ export interface Database {
           first_name?: string | null
           id?: string
           last_name?: string | null
-          phone_password_hash?: string | null
-          text_password_hash?: string | null
+          password_hash?: string | null
+          phone?: string | null
           updated_at?: string | null
         }
         Relationships: []
