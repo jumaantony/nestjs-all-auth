@@ -16,7 +16,7 @@ export class SupabaseService {
   public createClient() {
     const supabaseClient = createClient<Database>(this.url, this.anonApiKey, {
       auth: {
-        persistSession: true,
+        persistSession: false,
       },
     });
     return supabaseClient;

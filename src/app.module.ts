@@ -6,7 +6,7 @@ import {
   configurations,
   configurationsValidator,
 } from '@common/config/configurations';
-import { PhoneModule } from '@/phone/phone.module';
+import { PhoneModule } from '@phone/phone.module';
 
 @Module({
   imports: [
@@ -16,8 +16,8 @@ import { PhoneModule } from '@/phone/phone.module';
       load: [configurations],
       validationSchema: configurationsValidator,
     }),
-    SupabaseModule,
     PhoneModule,
+    SupabaseModule,
   ],
   controllers: [],
   providers: [

@@ -6,6 +6,8 @@ export const configurationsValidator = Joi.object({
   SUPABASE_API_KEY: Joi.string().required(),
   SUPABASE_API_URL: Joi.string().required(),
   SUPABASE_JWT_SECRET: Joi.string().required(),
+  PREFIX_PADDING: Joi.string().required(),
+  SUFFIX_PADDING: Joi.string().required(),
 });
 
 export const configurations = () => ({
@@ -16,4 +18,6 @@ export const configurations = () => ({
     anonApiKey: process.env.SUPABASE_API_KEY,
     jwtSecret: process.env.SUPABASE_JWT_SECRET,
   },
+  prefixPadding: process.env.PREFIX_PADDING,
+  suffixPadding: process.env.SUFFIX_PADDING,
 });
