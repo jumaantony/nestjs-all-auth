@@ -6,7 +6,7 @@ import {
   PinResetResponse,
   UserSignInResponse,
   UserSignUpResponse,
-} from '@phone/phone.types';
+} from '@common/types/auth.types';
 
 @Injectable()
 export class PhoneRepository {
