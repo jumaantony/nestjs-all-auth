@@ -7,6 +7,7 @@ import {
   configurationsValidator,
 } from '@common/config/configurations';
 import { PhoneModule } from '@phone/phone.module';
+import { EmailModule } from '@email/email.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { PhoneModule } from '@phone/phone.module';
     }),
     PhoneModule,
     SupabaseModule,
+    EmailModule,
   ],
   controllers: [],
   providers: [

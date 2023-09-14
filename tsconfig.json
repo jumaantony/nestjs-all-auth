@@ -22,6 +22,7 @@
       "@common/*": ["src/common/*"],
       "@supabase-module/*": ["src/supabase/*"],
       "@phone/*": ["src/phone/*"],
+      "@email/*": ["src/email/*"],
     }
   }
 }
