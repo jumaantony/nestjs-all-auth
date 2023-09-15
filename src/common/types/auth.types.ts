@@ -17,3 +17,4 @@ export interface PinResetResponse {
 export interface updatePhoneNumberResponse {
   user: User;
 }
+
