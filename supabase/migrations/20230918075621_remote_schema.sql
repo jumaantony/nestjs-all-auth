@@ -28,8 +28,8 @@ CREATE OR REPLACE FUNCTION "public"."handle_new_user"() RETURNS "trigger"
     LANGUAGE "plpgsql" SECURITY DEFINER
     AS $$
 begin
-   insert into public.users(id, phone, password_hash, created_at, updated_at)
-  values (new.id, new.phone, new.encrypted_password, new.created_at, new.updated_at);
+   insert into public.profiles(id, phone, password_hash, created_at, updated_at, email)
+  values (new.id, new.phone, new.encrypted_password, new.created_at, new.updated_at, new.email);
   return new;
 end;
 $$;
@@ -43,16 +43,17 @@ BEGIN
   -- Check if this is an update (the ID remains the same)
   IF OLD.id = NEW.id THEN
     -- Update the corresponding row in the public.users table
-    UPDATE public.users
+    UPDATE public.profiles
     SET 
       phone = NEW.phone,
       password_hash = NEW.encrypted_password,
-      updated_at = NEW.updated_at
+      updated_at = NEW.updated_at,
+      email = NEW.email
     WHERE id = NEW.id;
   ELSE
     -- Insert a new row in public.users
-    INSERT INTO public.users(id, phone, password_hash, updated_at)
-    VALUES (NEW.id, NEW.phone, NEW.encrypted_password, NEW.updated_at);
+    INSERT INTO public.users(id, phone, password_hash, updated_at, email)
+    VALUES (NEW.id, NEW.phone, NEW.encrypted_password, NEW.updated_at, NEW.email);
   END IF;
 
   RETURN NEW;
@@ -65,22 +66,23 @@ SET default_tablespace = '';
 
 SET default_table_access_method = "heap";
 
-CREATE TABLE IF NOT EXISTS "public"."users" (
+CREATE TABLE IF NOT EXISTS "public"."profiles" (
     "id" "uuid" DEFAULT "gen_random_uuid"() NOT NULL,
     "first_name" "text",
     "last_name" "text",
     "password_hash" "text",
     "created_at" timestamp with time zone DEFAULT "now"(),
     "updated_at" timestamp with time zone DEFAULT "now"(),
-    "phone" "text"
+    "phone" "text",
+    "email" "text"
 );
 
-ALTER TABLE "public"."users" OWNER TO "postgres";
+ALTER TABLE "public"."profiles" OWNER TO "postgres";
 
-ALTER TABLE ONLY "public"."users"
+ALTER TABLE ONLY "public"."profiles"
     ADD CONSTRAINT "auth_pkey" PRIMARY KEY ("id");
 
-ALTER TABLE ONLY "public"."users"
+ALTER TABLE ONLY "public"."profiles"
     ADD CONSTRAINT "users_phone_key" UNIQUE ("phone");
 
 REVOKE USAGE ON SCHEMA "public" FROM PUBLIC;
@@ -97,9 +99,9 @@ GRANT ALL ON FUNCTION "public"."handle_user_update"() TO "anon";
 GRANT ALL ON FUNCTION "public"."handle_user_update"() TO "authenticated";
 GRANT ALL ON FUNCTION "public"."handle_user_update"() TO "service_role";
 
-GRANT ALL ON TABLE "public"."users" TO "anon";
-GRANT ALL ON TABLE "public"."users" TO "authenticated";
-GRANT ALL ON TABLE "public"."users" TO "service_role";
+GRANT ALL ON TABLE "public"."profiles" TO "anon";
+GRANT ALL ON TABLE "public"."profiles" TO "authenticated";
+GRANT ALL ON TABLE "public"."profiles" TO "service_role";
 
 ALTER DEFAULT PRIVILEGES FOR ROLE "postgres" IN SCHEMA "public" GRANT ALL ON SEQUENCES  TO "postgres";
 ALTER DEFAULT PRIVILEGES FOR ROLE "postgres" IN SCHEMA "public" GRANT ALL ON SEQUENCES  TO "anon";
