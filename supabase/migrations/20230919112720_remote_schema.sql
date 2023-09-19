@@ -74,7 +74,8 @@ CREATE TABLE IF NOT EXISTS "public"."profiles" (
     "created_at" timestamp with time zone DEFAULT "now"(),
     "updated_at" timestamp with time zone DEFAULT "now"(),
     "phone" "text",
-    "email" "text"
+    "email" "text",
+    "profile_url" "text"
 );
 
 ALTER TABLE "public"."profiles" OWNER TO "postgres";
