@@ -1,5 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { UserSignUpResponse, UserSignInResponse } from '@common/types/auth.types';
+import {
+  UserSignUpResponse,
+  UserSignInResponse,
+} from '@common/types/auth.types';
 import { Session, User } from '@supabase/supabase-js';
 
 export const userResponseExample = {

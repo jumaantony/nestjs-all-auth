@@ -7,6 +7,6 @@ import { EmailRepository } from '@email/email.repository';
 @Module({
   imports: [SupabaseModule],
   providers: [EmailRepository, EmailService],
-  controllers: [EmailController]
+  controllers: [EmailController],
 })
 export class EmailModule {}
