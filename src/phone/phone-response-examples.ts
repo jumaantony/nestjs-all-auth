@@ -128,3 +128,11 @@ export class PinResetResponse {
   })
   readonly user: User;
 }
+
+export class changePhoneNumberResponse {
+  @ApiProperty({
+    example: userResponseExample,
+  })
+  readonly user: User;
+  // session: Session;
+}

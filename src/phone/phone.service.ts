@@ -1,11 +1,11 @@
 import { padPassword } from '@common/helpers/auth.helpers';
 import { Injectable } from '@nestjs/common';
 import { PhoneRepository } from '@phone/phone.repository';
-import { PinResetResponse, UserSignUpResponse } from '@common/types/auth.types';
+import { PinResetResponse, UserSignUpResponse, updatePhoneNumberResponse } from '@common/types/auth.types';
 
 @Injectable()
 export class PhoneService {
-  constructor(private readonly _phoneRepository: PhoneRepository) {}
+  constructor(private readonly _phoneRepository: PhoneRepository) { }
 
   async phoneNumberSignUp(
     phoneNumber: string,
@@ -57,6 +57,17 @@ export class PhoneService {
       phoneNumber,
       otp,
       paddedPIN,
+    );
+    return response;
+  }
+
+  async changePhoneNumber(
+    id: string,
+    phoneNumber: string,
+  ): Promise<updatePhoneNumberResponse > {
+    const response = this._phoneRepository.changePhoneNumber(
+      id,
+      phoneNumber,
     );
     return response;
   }

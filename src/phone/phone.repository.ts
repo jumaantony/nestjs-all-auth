@@ -6,7 +6,9 @@ import {
   PinResetResponse,
   UserSignInResponse,
   UserSignUpResponse,
+  updatePhoneNumberResponse,
 } from '@common/types/auth.types';
+import { phoneNumberDto } from './dto/phone-credentials.dto';
 
 @Injectable()
 export class PhoneRepository {
@@ -90,5 +92,28 @@ export class PhoneRepository {
       throw new BaseException(error.message, error.status);
     }
     return resetData;
+  }
+
+  public async changePhoneNumber(
+    phoneNumber: string,
+    id: string,
+  ): Promise<updatePhoneNumberResponse > {
+    const { data, error: changePhoneNumberError } = await this._supabase.auth.updateUser(
+      {phone: phoneNumber,}
+    );
+
+    if (changePhoneNumberError) {
+      throw new BaseException(changePhoneNumberError.message, changePhoneNumberError.status);
+    }
+
+    // return this.resendOtp(phoneNumber);
+
+    // const { data, error } = await this._supabase.auth.signInWithOtp({
+    //   phone: phoneNumber,
+    // });
+    // if (error) {
+    //   throw new BaseException(error.message, error.status);
+    // }
+    return data;
   }
 }

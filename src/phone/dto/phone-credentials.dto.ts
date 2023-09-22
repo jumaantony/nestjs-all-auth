@@ -8,7 +8,7 @@ import { ApiProperty } from '@nestjs/swagger';
 
 const VALID_PIN_LENGTH = 4;
 
-export class AuthCredentialsDto {
+export class phoneNumberDto {
   @ApiProperty({
     description: 'A valid phone number',
     example: '+254742491942',
@@ -16,7 +16,9 @@ export class AuthCredentialsDto {
   @IsPhoneNumber()
   @IsNotEmpty()
   readonly phoneNumber: string;
+}
 
+export class AuthCredentialsDto extends phoneNumberDto {
   @ApiProperty({ description: 'A 4-digit numeric PIN', example: '1234' })
   @IsNumberString()
   @IsNotEmpty()

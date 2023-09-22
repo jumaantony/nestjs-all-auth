@@ -1,22 +1,25 @@
-import { Body, Controller, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Param, Patch, Post, Req, UseGuards } from '@nestjs/common';
 import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { PhoneService } from '@phone/phone.service';
-import { AuthCredentialsDto } from '@phone/dto/phone-credentials.dto';
+import { AuthCredentialsDto, phoneNumberDto } from '@phone/dto/phone-credentials.dto';
 import {
   PhoneResendOtpResponse,
   PhoneSignInResponse,
   PhoneSignUpResponse,
   PinResetResponse,
   VerifyPhoneResponse,
+  changePhoneNumberResponse,
 } from './phone-response-examples';
 import { VerifyOtpDto } from '@phone/dto/verify-otp-dto';
 import { ResendOtpDto } from '@phone/dto/resend-otp-dto';
 import { ResetPinDto } from '@phone/dto/reset-pin.dto';
+import { IsAuthenticatedUserGuard } from '@common/guards/auth.guard';
+import { Request } from 'express';
 
 @ApiTags('Phone Authentication')
 @Controller('phone')
 export class PhoneController {
-  constructor(private readonly _phoneService: PhoneService) {}
+  constructor(private readonly _phoneService: PhoneService) { }
 
   @Post('signup')
   @ApiOperation({ summary: 'Sign up with phone number' })
@@ -96,6 +99,26 @@ export class PhoneController {
   async resetPin(@Body() body: ResetPinDto) {
     const { phoneNumber, otp, PIN } = body;
     const response = await this._phoneService.resetPin(phoneNumber, otp, PIN);
+    return response;
+  }
+
+  @Patch('change-phone-number')
+  @ApiOperation({
+    summary: 'Change phone number',
+  })
+  @ApiBody({ type: phoneNumberDto })
+  @ApiResponse({
+    status: 200,
+    description: 'Phone number change was successful.',
+    type: changePhoneNumberResponse,
+  })
+  @UseGuards(IsAuthenticatedUserGuard)
+  async changePhoneNumber(
+    @Req() req: Request,
+    @Body() body: phoneNumberDto,
+  ): Promise<changePhoneNumberResponse> {
+    const id = req['userId'];
+    const response = await this._phoneService.changePhoneNumber(body.phoneNumber, id);
     return response;
   }
 }
