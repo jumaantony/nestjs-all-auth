@@ -1,7 +1,10 @@
-import { Body, Controller, Param, Patch, Post, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Patch, Post, Req, UseGuards } from '@nestjs/common';
 import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { PhoneService } from '@phone/phone.service';
-import { AuthCredentialsDto, phoneNumberDto } from '@phone/dto/phone-credentials.dto';
+import {
+  AuthCredentialsDto,
+  phoneNumberDto,
+} from '@phone/dto/phone-credentials.dto';
 import {
   PhoneResendOtpResponse,
   PhoneSignInResponse,
@@ -19,7 +22,7 @@ import { Request } from 'express';
 @ApiTags('Phone Authentication')
 @Controller('phone')
 export class PhoneController {
-  constructor(private readonly _phoneService: PhoneService) { }
+  constructor(private readonly _phoneService: PhoneService) {}
 
   @Post('signup')
   @ApiOperation({ summary: 'Sign up with phone number' })
@@ -118,7 +121,10 @@ export class PhoneController {
     @Body() body: phoneNumberDto,
   ): Promise<changePhoneNumberResponse> {
     const id = req['userId'];
-    const response = await this._phoneService.changePhoneNumber(body.phoneNumber, id);
+    const response = await this._phoneService.changePhoneNumber(
+      body.phoneNumber,
+      id,
+    );
     return response;
   }
 }
