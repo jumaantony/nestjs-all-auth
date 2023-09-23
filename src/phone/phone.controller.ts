@@ -105,26 +105,26 @@ export class PhoneController {
     return response;
   }
 
-  @Patch('change-phone-number')
-  @ApiOperation({
-    summary: 'Change phone number',
-  })
-  @ApiBody({ type: phoneNumberDto })
-  @ApiResponse({
-    status: 200,
-    description: 'Phone number change was successful.',
-    type: changePhoneNumberResponse,
-  })
-  @UseGuards(IsAuthenticatedUserGuard)
-  async changePhoneNumber(
-    @Req() req: Request,
-    @Body() body: phoneNumberDto,
-  ): Promise<changePhoneNumberResponse> {
-    const id = req['userId'];
-    const response = await this._phoneService.changePhoneNumber(
-      body.phoneNumber,
-      id,
-    );
-    return response;
-  }
+  // @Patch('change-phone-number')
+  // @ApiOperation({
+  //   summary: 'Change phone number',
+  // })
+  // @ApiBody({ type: phoneNumberDto })
+  // @ApiResponse({
+  //   status: 200,
+  //   description: 'Phone number change was successful.',
+  //   type: changePhoneNumberResponse,
+  // })
+  // @UseGuards(IsAuthenticatedUserGuard)
+  // async changePhoneNumber(
+  //   @Req() req: Request,
+  //   @Body() body: phoneNumberDto,
+  // ): Promise<changePhoneNumberResponse> {
+  //   const id = req['userId'];
+  //   const response = await this._phoneService.changePhoneNumber(
+  //     body.phoneNumber,
+  //     id,
+  //   );
+  //   return response;
+  // }
 }

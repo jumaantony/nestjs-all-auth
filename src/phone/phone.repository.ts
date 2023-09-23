@@ -93,27 +93,27 @@ export class PhoneRepository {
     return resetData;
   }
 
-  public async changePhoneNumber(
-    phoneNumber: string,
-  ): Promise<updatePhoneNumberResponse> {
-    const { data, error: changePhoneNumberError } =
-      await this._supabase.auth.updateUser({ phone: phoneNumber });
+  // public async changePhoneNumber(
+  //   phoneNumber: string,
+  // ): Promise<updatePhoneNumberResponse> {
+  //   const { data, error: changePhoneNumberError } =
+  //     await this._supabase.auth.updateUser({ phone: phoneNumber });
 
-    if (changePhoneNumberError) {
-      throw new BaseException(
-        changePhoneNumberError.message,
-        changePhoneNumberError.status,
-      );
-    }
+  //   if (changePhoneNumberError) {
+  //     throw new BaseException(
+  //       changePhoneNumberError.message,
+  //       changePhoneNumberError.status,
+  //     );
+  //   }
 
-    // return this.resendOtp(phoneNumber);
+  //   // return this.resendOtp(phoneNumber);
 
-    // const { data, error } = await this._supabase.auth.signInWithOtp({
-    //   phone: phoneNumber,
-    // });
-    // if (error) {
-    //   throw new BaseException(error.message, error.status);
-    // }
-    return data;
-  }
+  //   // const { data, error } = await this._supabase.auth.signInWithOtp({
+  //   //   phone: phoneNumber,
+  //   // });
+  //   // if (error) {
+  //   //   throw new BaseException(error.message, error.status);
+  //   // }
+  //   return data;
+  // }
 }

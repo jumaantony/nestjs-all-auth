@@ -65,11 +65,11 @@ export class PhoneService {
     return response;
   }
 
-  async changePhoneNumber(
-    id: string,
-    phoneNumber: string,
-  ): Promise<updatePhoneNumberResponse> {
-    const response = this._phoneRepository.changePhoneNumber(id, phoneNumber);
-    return response;
-  }
+  // async changePhoneNumber(
+  //   id: string,
+  //   phoneNumber: string,
+  // ): Promise<updatePhoneNumberResponse> {
+  //   const response = this._phoneRepository.changePhoneNumber(id, phoneNumber);
+  //   return response;
+  // }
 }
