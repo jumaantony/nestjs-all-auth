@@ -23,6 +23,7 @@
       "@supabase-module/*": ["src/supabase/*"],
       "@phone/*": ["src/phone/*"],
       "@email/*": ["src/email/*"],
+      "@users/*": ["src/users/*"],
     }
   }
 }

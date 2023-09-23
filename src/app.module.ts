@@ -8,6 +8,9 @@ import {
 } from '@common/config/configurations';
 import { PhoneModule } from '@phone/phone.module';
 import { EmailModule } from '@email/email.module';
+import { UsersModule } from '@users/users.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { DataSource } from 'typeorm';
 
 @Module({
   imports: [
@@ -17,9 +20,21 @@ import { EmailModule } from '@email/email.module';
       load: [configurations],
       validationSchema: configurationsValidator,
     }),
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: process.env.SUPABASE_HOST,
+      port: 5432,
+      username: process.env.SUPABASE_USERNAME,
+      password: process.env.SUPABASE_PASSWORD,
+      database: process.env.SUPABASE_DATABASE,
+      entities: [__dirname + './**/*.entity{.ts,.js}'],
+      synchronize: true,
+      autoLoadEntities: true,
+    }),
     PhoneModule,
     SupabaseModule,
     EmailModule,
+    UsersModule,
   ],
   controllers: [],
   providers: [
@@ -32,4 +47,6 @@ import { EmailModule } from '@email/email.module';
     },
   ],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private datasource: DataSource) {}
+}
