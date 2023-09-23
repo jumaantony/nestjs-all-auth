@@ -3,12 +3,28 @@ import { UsersService } from '@users/users.service';
 import { IsAuthenticatedUserGuard } from '@common/guards/auth.guard';
 import { Request } from 'express';
 import { UpdateProfileDto } from '@users/dto/update-profile.dto';
+import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { userProfilesResponse, usersResponse } from './user-response-examples';
+import { profiles } from './entity/users.entity';
 
+@ApiTags('Users')
 @Controller('users')
 export class UsersController {
   constructor(private readonly _usersService: UsersService) {}
 
   @Get('user-profile')
+  @ApiOperation({ summary: 'Get user profile' })
+  @ApiResponse({
+    status: 200,
+    description: 'user profile retreived successfully.',
+    content: {
+      'application/json': {
+        schema: {
+          example: usersResponse,
+        },
+      },
+    },
+  })
   @UseGuards(IsAuthenticatedUserGuard)
   async getUserProfile(@Req() req: Request): Promise<UpdateProfileDto> {
     const userId: string = req['userId'];
@@ -17,6 +33,18 @@ export class UsersController {
   }
 
   @Patch('user-profile')
+  @ApiOperation({ summary: 'Update User Profile' })
+  @ApiResponse({
+    status: 200,
+    description: 'user profile updated successfully.',
+    content: {
+      'application/json': {
+        schema: {
+          example: usersResponse,
+        },
+      },
+    },
+  })
   @UseGuards(IsAuthenticatedUserGuard)
   async updateUserProfile(
     @Req() req: Request,
@@ -32,6 +60,18 @@ export class UsersController {
   }
 
   @Get('all-users')
+  @ApiOperation({ summary: 'Get users profiles' })
+  @ApiResponse({
+    status: 200,
+    description: 'user profiles retreived successfully.',
+    content: {
+      'application/json': {
+        schema: {
+          example: userProfilesResponse,
+        },
+      },
+    },
+  })
   @UseGuards(IsAuthenticatedUserGuard)
   async getAllUsers(): Promise<UpdateProfileDto[]> {
     const response = await this._usersService.getAllUsers();
