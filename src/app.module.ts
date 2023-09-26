@@ -12,6 +12,7 @@ import { UsersModule } from '@users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 import { MediaModule } from '@media/media.module';
+import { SocialsModule } from '@socials/socials.module';
 
 @Module({
   imports: [
@@ -37,6 +38,7 @@ import { MediaModule } from '@media/media.module';
     EmailModule,
     UsersModule,
     MediaModule,
+    SocialsModule,
   ],
   controllers: [],
   providers: [

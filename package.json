@@ -87,7 +87,8 @@
       "@phone/(.*)$": "<rootDir>/../src/phone/$1",
       "@email/(.*)$": "<rootDir>/../src/email/$1",
       "@users/(.*)$": "<rootDir>/../src/users/$1",
-      "@media/(.*)$": "<rootDir>/../src/media/$1"
+      "@media/(.*)$": "<rootDir>/../src/media/$1",
+      "@socials/(.*)$": "<rootDir>/../src/socials/$1"
     }
   }
 }
