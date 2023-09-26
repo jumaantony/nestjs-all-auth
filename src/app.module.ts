@@ -11,6 +11,7 @@ import { EmailModule } from '@email/email.module';
 import { UsersModule } from '@users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
+import { MediaModule } from '@media/media.module';
 
 @Module({
   imports: [
@@ -35,6 +36,7 @@ import { DataSource } from 'typeorm';
     SupabaseModule,
     EmailModule,
     UsersModule,
+    MediaModule,
   ],
   controllers: [],
   providers: [

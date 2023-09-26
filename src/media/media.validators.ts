@@ -1,6 +1,6 @@
 import * as fileType from 'file-type-mime';
 import { FileValidator } from '@nestjs/common';
-import { UploadTypeValidatorOPtions } from './uploads.types';
+import { UploadTypeValidatorOPtions } from './media.types';
 
 export class UploadProfilePicValidator extends FileValidator {
   private _allowedMimeTypes: string[];

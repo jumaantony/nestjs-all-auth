@@ -24,6 +24,7 @@
       "@phone/*": ["src/phone/*"],
       "@email/*": ["src/email/*"],
       "@users/*": ["src/users/*"],
+      "@media/*": ["src/media/*"],
     }
   }
 }

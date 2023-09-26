@@ -24,4 +24,7 @@ export class profiles {
 
   @Column({ nullable: false })
   created_at: Date;
+
+  @Column({ nullable: true })
+  profile_url: string;
 }
