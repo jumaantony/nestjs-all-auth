@@ -6,7 +6,6 @@ import {
   PinResetResponse,
   UserSignInResponse,
   UserSignUpResponse,
-  updatePhoneNumberResponse,
 } from '@common/types/auth.types';
 
 @Injectable()

@@ -1,23 +1,17 @@
-import { Body, Controller, Patch, Post, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Patch, Post } from '@nestjs/common';
 import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { PhoneService } from '@phone/phone.service';
-import {
-  AuthCredentialsDto,
-  phoneNumberDto,
-} from '@phone/dto/phone-credentials.dto';
+import { AuthCredentialsDto } from '@phone/dto/phone-credentials.dto';
 import {
   PhoneResendOtpResponse,
   PhoneSignInResponse,
   PhoneSignUpResponse,
   PinResetResponse,
   VerifyPhoneResponse,
-  changePhoneNumberResponse,
 } from './phone-response-examples';
 import { VerifyOtpDto } from '@phone/dto/verify-otp-dto';
 import { ResendOtpDto } from '@phone/dto/resend-otp-dto';
 import { ResetPinDto } from '@phone/dto/reset-pin.dto';
-import { IsAuthenticatedUserGuard } from '@common/guards/auth.guard';
-import { Request } from 'express';
 
 @ApiTags('Phone Authentication')
 @Controller('phone')

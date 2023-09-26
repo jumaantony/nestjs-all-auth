@@ -1,11 +1,7 @@
 import { padPassword } from '@common/helpers/auth.helpers';
 import { Injectable } from '@nestjs/common';
 import { PhoneRepository } from '@phone/phone.repository';
-import {
-  PinResetResponse,
-  UserSignUpResponse,
-  updatePhoneNumberResponse,
-} from '@common/types/auth.types';
+import { PinResetResponse, UserSignUpResponse } from '@common/types/auth.types';
 
 @Injectable()
 export class PhoneService {
