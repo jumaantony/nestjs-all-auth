@@ -6,6 +6,7 @@ export const usersResponse = {
   phone: '+254712345678',
   email: 'johndoe@gmail.com',
   created_at: '2023-09-23T12:39:47.029Z',
+  profile_url: 'https://example.com/profiles/4350d040-9857-4e7d-929b-46baf8e38ba5',
 };
 
 export const userProfilesResponse = [usersResponse];
