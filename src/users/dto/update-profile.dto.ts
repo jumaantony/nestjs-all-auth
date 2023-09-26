@@ -1,6 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsString } from 'class-validator';
-import { first } from 'rxjs';
 
 export class UpdateProfileDto {
   @ApiProperty({
