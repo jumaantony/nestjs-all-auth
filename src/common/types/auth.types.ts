@@ -1,4 +1,4 @@
-import { User, Session } from '@supabase/supabase-js';
+import { User, Session, Provider } from '@supabase/supabase-js';
 
 export interface UserSignUpResponse {
   user: User;
@@ -16,4 +16,9 @@ export interface PinResetResponse {
 
 export interface updatePhoneNumberResponse {
   user: User;
+}
+
+export interface socialSignInResponse {
+    provider: Provider;
+    url: string | null;
 }

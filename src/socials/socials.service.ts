@@ -1,3 +1,4 @@
+import { socialSignInResponse } from '@common/types/auth.types';
 import { Injectable } from '@nestjs/common';
 import { SocialRepository } from '@socials/socials.repository';
 
@@ -7,7 +8,7 @@ export class SocialsService {
 		  private _socialRepository: SocialRepository
 	  ) {}
 
-	  public async signInWithFacebook(){
-		  return await this._socialRepository.signInWithFacebook();
+	  public async signUpWithFacebook(): Promise<socialSignInResponse>{
+		  return await this._socialRepository.signUpWithFacebook();
 	  }
 }

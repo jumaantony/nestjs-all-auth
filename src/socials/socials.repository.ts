@@ -1,4 +1,6 @@
-import { SupabaseService } from "@/supabase/supabase.service";
+import { BaseException } from "@common/exceptions/base.exception";
+import { socialSignInResponse } from "@common/types/auth.types";
+import { SupabaseService } from "@supabase-module/supabase.service";
 import { Injectable } from "@nestjs/common";
 import { SupabaseClient } from "@supabase/supabase-js";
 
@@ -10,10 +12,14 @@ export class SocialRepository {
 	  this._supabaseClient = _supabaseClientFactory.createClient();
 	}
 
-	public async signInWithFacebook(){
+	public async signUpWithFacebook(): Promise<socialSignInResponse>{
 		const { data, error } = await this._supabaseClient.auth.signInWithOAuth({
-			provider: 'facebook'
+			provider: 'facebook',
 		});
+
+		if (error) {
+			throw new BaseException(error.message);
+		}
 		return data;
 	}
 }
