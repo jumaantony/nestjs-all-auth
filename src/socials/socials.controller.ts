@@ -16,7 +16,7 @@ export class SocialsController {
     description: 'The user has been successfully created.',
     type: SocialSignInResponse,
   })
-  public async signUpWithFacebook(): Promise<socialSignInResponse>{
+  public async signUpWithFacebook(): Promise<socialSignInResponse> {
     return await this._socialsService.signUpWithFacebook();
   }
 
@@ -27,7 +27,7 @@ export class SocialsController {
     description: 'The user has been successfully created.',
     type: SocialSignInResponse,
   })
-  public async signUpWithGoogle(): Promise<socialSignInResponse>{
+  public async signUpWithGoogle(): Promise<socialSignInResponse> {
     return await this._socialsService.signUpWithGoogle();
   }
 }

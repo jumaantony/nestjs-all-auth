@@ -19,6 +19,6 @@ export interface updatePhoneNumberResponse {
 }
 
 export interface socialSignInResponse {
-    provider: Provider;
-    url: string | null;
+  provider: Provider;
+  url: string | null;
 }
