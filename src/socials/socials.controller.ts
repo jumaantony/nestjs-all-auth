@@ -19,4 +19,15 @@ export class SocialsController {
   public async signUpWithFacebook(): Promise<socialSignInResponse>{
     return await this._socialsService.signUpWithFacebook();
   }
+
+  @Post('signup/google')
+  @ApiOperation({ summary: 'Sign up with google' })
+  @ApiResponse({
+    status: 201,
+    description: 'The user has been successfully created.',
+    type: SocialSignInResponse,
+  })
+  public async signUpWithGoogle(): Promise<socialSignInResponse>{
+    return await this._socialsService.signUpWithGoogle();
+  }
 }

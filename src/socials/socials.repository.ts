@@ -22,4 +22,15 @@ export class SocialRepository {
 		}
 		return data;
 	}
+
+	public async signUpWithGoogle(): Promise<socialSignInResponse>{
+		const { data, error } = await this._supabaseClient.auth.signInWithOAuth({
+			provider: 'google',
+		});
+
+		if (error) {
+			throw new BaseException(error.message);
+		}
+		return data;
+	}
 }

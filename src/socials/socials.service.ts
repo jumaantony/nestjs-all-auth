@@ -11,4 +11,8 @@ export class SocialsService {
 	  public async signUpWithFacebook(): Promise<socialSignInResponse>{
 		  return await this._socialRepository.signUpWithFacebook();
 	  }
+
+	  public async signUpWithGoogle(): Promise<socialSignInResponse>{
+		  return await this._socialRepository.signUpWithGoogle();
+	  }
 }
