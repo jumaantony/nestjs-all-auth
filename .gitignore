@@ -37,4 +37,5 @@ lerna-debug.log*
 #environment variables
 /.env/.env.development
 /.env/.env.test
+cypress.config.ts
 .vercel
